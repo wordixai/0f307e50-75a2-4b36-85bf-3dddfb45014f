@@ -1,9 +1,13 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Only create client if credentials are configured
+export const supabase: SupabaseClient | null =
+  supabaseUrl && supabaseAnonKey
+    ? createClient(supabaseUrl, supabaseAnonKey)
+    : null;
 
 // Helper to convert File to base64
 export const fileToBase64 = (file: File): Promise<string> => {
@@ -25,6 +29,23 @@ export const virtualTryOn = async (
   personImage: File,
   clothingImage: File
 ): Promise<{ success: boolean; resultImageUrl?: string; error?: string }> => {
+  // Check if Supabase is configured
+  if (!supabase) {
+    // Demo mode: return the person image as result for preview
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          resolve({
+            success: true,
+            resultImageUrl: reader.result as string,
+          });
+        };
+        reader.readAsDataURL(personImage);
+      }, 2000); // Simulate processing time
+    });
+  }
+
   try {
     const [personBase64, clothingBase64] = await Promise.all([
       fileToBase64(personImage),
