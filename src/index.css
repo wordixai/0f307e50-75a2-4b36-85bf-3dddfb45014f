@@ -4,10 +4,193 @@
 
 @layer base {
   :root {
-   
+    /* Fashion Minimalist - Light Mode */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 4%;
+
+    --primary: 0 0% 4%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 4%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 0 0% 92%;
+    --accent-foreground: 0 0% 4%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 4%;
+
+    --radius: 0px;
+
+    /* Custom fashion tokens */
+    --fashion-gold: 45 93% 47%;
+    --fashion-cream: 40 33% 95%;
   }
 
   .dark {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 96%;
 
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 96%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 96%;
+
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 4%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 96%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 96%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* Typography utilities */
+  .fashion-heading-xl {
+    @apply text-5xl md:text-7xl lg:text-8xl font-normal tracking-tight leading-none;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .fashion-heading-lg {
+    @apply text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .fashion-heading-md {
+    @apply text-2xl md:text-3xl font-normal tracking-tight;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .fashion-body {
+    @apply text-sm md:text-base font-normal tracking-wide leading-relaxed;
+  }
+
+  .fashion-caption {
+    @apply text-xs uppercase tracking-[0.2em] font-medium;
+  }
+
+  /* Button styles */
+  .fashion-button {
+    @apply border border-foreground bg-transparent hover:bg-foreground hover:text-background
+           transition-all duration-300 ease-out px-8 py-4 text-xs uppercase tracking-[0.2em] font-medium;
+  }
+
+  .fashion-button-filled {
+    @apply bg-foreground text-background hover:bg-transparent hover:text-foreground border border-foreground
+           transition-all duration-300 ease-out px-8 py-4 text-xs uppercase tracking-[0.2em] font-medium;
+  }
+
+  /* Upload zone */
+  .upload-zone {
+    @apply border-2 border-dashed border-muted-foreground/30 hover:border-foreground/50
+           transition-all duration-300 cursor-pointer bg-muted/30 hover:bg-muted/50;
+  }
+
+  .upload-zone-active {
+    @apply border-foreground bg-accent;
+  }
+
+  /* Elegant animations */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  /* Processing spinner */
+  .processing-spinner {
+    @apply w-12 h-12 border-2 border-foreground/20 border-t-foreground rounded-full;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }

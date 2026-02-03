@@ -1,0 +1,37 @@
+[
+  {
+    "content": "设置设计系统（index.css + tailwind.config + 字体）",
+    "status": "completed",
+    "activeForm": "设置设计系统"
+  },
+  {
+    "content": "创建布局组件（Header, Footer）",
+    "status": "completed",
+    "activeForm": "创建布局组件"
+  },
+  {
+    "content": "创建着陆页组件（Hero, Features, HowItWorks）",
+    "status": "completed",
+    "activeForm": "创建着陆页组件"
+  },
+  {
+    "content": "创建试衣核心组件（ImageUploader, ProcessingOverlay, ResultDisplay）",
+    "status": "completed",
+    "activeForm": "创建试衣核心组件"
+  },
+  {
+    "content": "创建状态管理和hooks",
+    "status": "completed",
+    "activeForm": "创建状态管理和hooks"
+  },
+  {
+    "content": "创建页面（Index, TryOn）并配置路由",
+    "status": "completed",
+    "activeForm": "创建页面和配置路由"
+  },
+  {
+    "content": "创建Supabase Edge Function",
+    "status": "in_progress",
+    "activeForm": "创建Edge Function"
+  }
+]
